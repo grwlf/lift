@@ -14,13 +14,8 @@ let
     );
 
   lift = haskellPackages.callPackage
-      ({ mkDerivation, aeson, base, binary, bytestring, containers
-      , deepseq, directory, filepath, hashable, heap
-      , lens, mtl, optparse-applicative, pqueue, pretty-show
-      , process, psqueues, random, stdenv, stm, text, time
-      , transformers, unix, cabal-install, haskdogs, hasktags
-      , flippers, tasty, tasty-quickcheck, tasty-hunit, QuickCheck
-      , concurrent-extra
+      ({ mkDerivation, stdenv, base, containers, mtl, optparse-applicative, stm,
+      transformers, cabal-install, concurrent-extra
       }:
       mkDerivation {
         pname = "lift";
@@ -30,17 +25,9 @@ let
         isExecutable = true;
         doHaddock = false;
         libraryHaskellDepends = [
-          aeson base binary bytestring containers deepseq directory filepath
-          hashable heap lens
-          mtl optparse-applicative pqueue
-          pretty-show process psqueues random stm text time
-          transformers unix cabal-install flippers
-          tasty tasty-quickcheck tasty-hunit QuickCheck concurrent-extra
+          base containers mtl optparse-applicative stm transformers
+          cabal-install concurrent-extra
         ];
-        executableHaskellDepends = [
-          aeson base binary bytestring containers lens mtl
-          optparse-applicative text unix haskdogs hasktags
-          ] ;
 
         license = stdenv.lib.licenses.mit;
 
